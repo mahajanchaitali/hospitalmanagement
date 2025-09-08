@@ -15,6 +15,19 @@ exports.CreateCity = async(req,res)=>{
         console.log(error);
     }
 }
+
+exports.cityDelete = async(req,res)=>{
+    try{
+        let cityId = await city.findByIdAndUpdate({"_id":req.body.id},{name:req.body.name});
+        res.status(200).json({
+            message:"update of city",
+            code:200,
+            data:cityId
+        })
+    }catch(error){
+        console.log(error);
+    }
+}
 //list
 exports.listCity = async(req,res)=>{
     try{
